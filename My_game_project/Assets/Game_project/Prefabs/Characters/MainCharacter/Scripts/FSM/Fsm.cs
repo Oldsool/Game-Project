@@ -1,4 +1,3 @@
-using System.Collections;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
@@ -14,7 +13,6 @@ using Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM;
         public void AddState(FsmState state)
         {
             _states.Add(state.GetType(), state);
-
         }
 
         public void SetState<T>() where T : FsmState
