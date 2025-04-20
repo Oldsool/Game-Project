@@ -47,7 +47,24 @@ namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
 
         protected virtual void Move(Vector2 inputDirection)
         {
-            Transform.position += new Vector3(inputDirection.x, 0f, inputDirection.y) * (Speed * Time.deltaTime);
+            Vector3 moveDirection = Transform.right * inputDirection.x + Transform.forward * inputDirection.y;
+            Transform.position += moveDirection * Speed * Time.deltaTime;
+
+
+            if (inputDirection.x >= 0.1 || inputDirection.y >= 0.1)
+            {
+                Transform.rotation = Quaternion.Slerp(
+                    Transform.rotation,
+                    Quaternion.Euler(0,
+                    Camera.main.transform.eulerAngles.y,
+                    0), Time.fixedDeltaTime * 14f);
+
+            }
+        }
+
+        protected void rotatePlayer()
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Windows;
 
 namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
 {
@@ -27,15 +28,6 @@ namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
         void Update()
         {
             _fsm.Update();
-
-            //if (Input.GetKeyDown(KeyCode.W))
-            //{
-            //    animator.SetBool("isWalking",true);
-            //}
-            //if (Input.GetKeyUp(KeyCode.W))
-            //{
-            //    animator.SetBool("isWalking", false);
-            //}
         }
     }
 }
