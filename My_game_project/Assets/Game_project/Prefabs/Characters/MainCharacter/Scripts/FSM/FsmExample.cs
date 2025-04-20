@@ -7,14 +7,17 @@ namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
         private Fsm _fsm;
         private float _walkSpeed = 10f;
         private float _runSpeed = 20f;
+        private Animator animator;
 
 
         void Start()
         {
+            animator = GetComponent<Animator>();
+
             _fsm = new Fsm();
 
             _fsm.AddState(new FsmStateIdle(_fsm));
-            _fsm.AddState(new FsmStateWalk(_fsm, transform, _walkSpeed));
+            _fsm.AddState(new FsmStateWalk(_fsm, transform, _walkSpeed, animator));
             _fsm.AddState(new FsmStateRun(_fsm, transform, _runSpeed));
 
             _fsm.SetState<FsmStateIdle>();
@@ -24,6 +27,15 @@ namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
         void Update()
         {
             _fsm.Update();
+
+            //if (Input.GetKeyDown(KeyCode.W))
+            //{
+            //    animator.SetBool("isWalking",true);
+            //}
+            //if (Input.GetKeyUp(KeyCode.W))
+            //{
+            //    animator.SetBool("isWalking", false);
+            //}
         }
     }
 }
