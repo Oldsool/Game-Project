@@ -5,7 +5,11 @@ namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
 {
     public class FsmStateRun : FsmStateMovement
     {
-        public FsmStateRun(Fsm fsm, Transform transform, float speed) : base(fsm, transform, speed) { }
+        Animator animator;
+        public FsmStateRun(Fsm fsm, Transform transform, float speed, Animator animator) : base(fsm, transform, speed) 
+        { 
+            this.animator = animator;
+        }
 
         public override void Update()
         {
@@ -15,11 +19,13 @@ namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
 
             if (inputDirection.sqrMagnitude == 0f)
             {
+                animator.SetBool("isWalking", false);
                 Fsm.SetState<FsmStateIdle>();
             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
+                animator.SetBool("isRunning", false);
                 Fsm.SetState<FsmStateWalk>();
             }
 

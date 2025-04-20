@@ -29,6 +29,7 @@ namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
+                animator.SetBool("isRunning", true);
                 Fsm.SetState<FsmStateRun>();
             }
 

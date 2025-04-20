@@ -18,7 +18,7 @@ namespace Assets.Game_project.Prefabs.Characters.MainCharacter.Scripts.FSM
 
             _fsm.AddState(new FsmStateIdle(_fsm));
             _fsm.AddState(new FsmStateWalk(_fsm, transform, _walkSpeed, animator));
-            _fsm.AddState(new FsmStateRun(_fsm, transform, _runSpeed));
+            _fsm.AddState(new FsmStateRun(_fsm, transform, _runSpeed, animator));
 
             _fsm.SetState<FsmStateIdle>();
         }
